@@ -1,29 +1,10 @@
-controller.A.onEvent(ControllerButtonEvent.Released, function () {
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    // if character is stand on the platform or ground can jump
     if (mySprite.vy == 0) {
         mySprite.vy = -120
     }
 })
 let mySprite: Sprite = null
-mySprite = sprites.create(img`
-    . . . . . . 4 4 4 4 4 . . . . . 
-    5 . . . . . 4 f 4 f 4 . . . 7 . 
-    5 . . . . . 4 4 4 4 4 . . . 7 7 
-    5 . . . . . 4 4 f 4 4 . . . 7 . 
-    5 . . . . . 4 4 4 4 4 . . . 7 . 
-    5 . . 4 4 4 4 4 4 4 4 4 4 4 7 . 
-    5 5 5 4 4 4 4 4 4 4 4 4 4 4 7 . 
-    . . . 4 4 4 5 4 4 4 7 4 4 4 . . 
-    . . . . . 4 4 4 4 4 4 4 . . . . 
-    . . . . . 4 4 4 4 4 4 4 . . . . 
-    . . . . . 4 4 4 4 4 4 4 . . . . 
-    . . . . . e e e e e e e . . . . 
-    . . . . . e e e e e e e . . . . 
-    . . . . . e e e e e e e . . . . 
-    . . . . . e e . . . e e . . . . 
-    . . . . . e e . . . e e . . . . 
-    `, SpriteKind.Player)
-controller.moveSprite(mySprite, 100, 0)
-mySprite.ay = 500
 scene.setBackgroundImage(img`
     6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
     6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
@@ -147,15 +128,30 @@ scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     `)
 tiles.setTilemap(tilemap`level_0`)
+mySprite = sprites.create(img`
+    . . . . . . 4 4 4 4 4 . . . . . 
+    5 . . . . . 4 f 4 f 4 . . . 7 . 
+    5 . . . . . 4 4 4 4 4 . . . 7 7 
+    5 . . . . . 4 4 f 4 4 . . . 7 . 
+    5 . . . . . 4 4 4 4 4 . . . 7 . 
+    5 . . 4 4 4 4 4 4 4 4 4 4 4 7 . 
+    5 5 5 4 4 4 4 4 4 4 4 4 4 4 7 . 
+    . . . 4 4 4 5 4 4 4 7 4 4 4 . . 
+    . . . . . 4 4 4 4 4 4 4 . . . . 
+    . . . . . 4 4 4 4 4 4 4 . . . . 
+    . . . . . 4 4 4 4 4 4 4 . . . . 
+    . . . . . e e e e e e e . . . . 
+    . . . . . e e e e e e e . . . . 
+    . . . . . e e e e e e e . . . . 
+    . . . . . e e . . . e e . . . . 
+    . . . . . e e . . . e e . . . . 
+    `, SpriteKind.Player)
+// controll main character
+controller.moveSprite(mySprite, 100, 0)
+// gravity in the game
+mySprite.ay = 500
 mySprite.setPosition(5, 104)
-mySprite.vy = 200
-// console.log("x")
-// console.log(mySprite.x)
-// console.log("=======================")
-// console.log("y")
-// console.log(mySprite.y)
-// console.log("=======================")
-
+// updating game
 game.onUpdate(function () {
     mySprite.setImage(img`
         . . . . . . 4 4 4 4 4 . . . . . 
