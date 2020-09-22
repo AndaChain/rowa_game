@@ -1,22 +1,8 @@
 {
-    "name": "Rowa",
-    "version": "0.0.0",
-    "description": "",
-    "dependencies": {
-        "device": "*",
-        "color": "*"
-    },
-    "files": [
-        "README.md",
-        "main.blocks",
-        "main.ts",
-        "tilemap.g.jres",
-        "tilemap.g.ts"
-    ],
-    "testFiles": [
-        "test.ts"
-    ],
-    "public": true,
+    "name": "this",
+    "description": "Syntax error in pxt.json",
+    "dependencies": {},
+    "files": [],
     "targetVersions": {
         "target": "1.2.7",
         "targetId": "arcade"
