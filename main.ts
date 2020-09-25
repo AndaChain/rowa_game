@@ -29,7 +29,7 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile4,
 //next level
 function next_level()
 {
-    if(level >= 0 && level <= 10)
+    if(level >= 0 && level <= 9)
     {
         // tile
         tiles.setTilemap(tilemap`level_0`)
@@ -162,7 +162,7 @@ function next_level()
             game.showLongText("Boss I", DialogLayout.Bottom)
         }
     }
-    else if(level >= 11 && level <= 20)
+    else if(level >= 10 && level <= 19)
     {
         // tile
         tiles.setTilemap(tilemap`level_1`)
@@ -295,7 +295,7 @@ function next_level()
             game.showLongText("Boss II", DialogLayout.Bottom)
         }
     }
-    else if(level >= 21 && level <= 30)
+    else if(level >= 20 && level <= 29)
     {
         // tile
         tiles.setTilemap(tilemap`level_2`)
@@ -428,7 +428,7 @@ function next_level()
             game.showLongText("Boss III", DialogLayout.Bottom)
         }
     }
-    else if(level >= 31 && level <= 40)
+    else if(level >= 30 && level <= 39)
     {
         // tile
         tiles.setTilemap(tilemap`level_3`)
@@ -561,7 +561,7 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
             game.showLongText("Boss IV", DialogLayout.Bottom)
         }
     }
-    else if(level >= 41 && level <= 45)
+    else if(level >= 40 && level <= 44)
     {
         // tile
         tiles.setTilemap(tilemap`level_4`)
@@ -689,9 +689,14 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
         `)
         mySprite.setPosition(9, 96)
     }
-    else if(level >= 46 && level <= 50)
+    else if(level >= 45 && level < 49)
     {
         // tile
+        if(level == 45)
+        {
+            game.showLongText("Final Boss", DialogLayout.Bottom)
+        }
+
         tiles.setTilemap(tilemap`level_5`)
         scene.setBackgroundImage(img`
             9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -816,12 +821,12 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
             555555555555555555555555555555555555f999999999911166666666666611888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
         `)
         mySprite.setPosition(9, 96)
-
-        if(level == 50)
-        {
-            game.showLongText("Final Boss", DialogLayout.Bottom)
-        }
     }
+    else
+    {
+        game.over(true)
+    }
+    console.log(level)
 }
 
 // updating game
