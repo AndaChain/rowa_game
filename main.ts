@@ -1,10 +1,15 @@
+/**
+ * scene.onOverlapTile(SpriteKind.Player, myTiles.transparency16, function (sprite, location) {
+ * 
+ * })
+ */
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     // if character is stand on the platform or ground can jump
     if (mySprite.vy == 0) {
         mySprite.vy = -150
     }
 })
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile13, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile11, function (sprite, location) {
     game.over(false, effects.melt)
 })
 let mySprite: Sprite = null
