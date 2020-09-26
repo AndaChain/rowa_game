@@ -1,4 +1,4 @@
-controller.A.onEvent(ControllerButtonEvent.Pressed,
+/*controller.A.onEvent(ControllerButtonEvent.Pressed,
     function ()
     {
         // if character is stand on the platform or ground can jump
@@ -7,24 +7,24 @@ controller.A.onEvent(ControllerButtonEvent.Pressed,
             rowa.vy = -150
         }
 
-    })
+    })*/
 
 //game over
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile11,
+/*scene.onOverlapTile(SpriteKind.Player, myTiles.tile11,
     function (sprite, location)
     {
         game.over(false, effects.melt)
-    })
+    })*/
 
-// win
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile4,
+// next
+/*scene.onOverlapTile(SpriteKind.Player, myTiles.tile4,
     function (sprite, location)
     {
 
         level += 1
         next_level()
     
-    })
+    })*/
 
 //next level
 function next_level()
@@ -155,7 +155,7 @@ function next_level()
             7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
             7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
         `)
-        rowa.setPosition(9, 96)
+        rowa.entity.setPosition(9, 96)
 
         if(level == 10)
         {
@@ -288,7 +288,7 @@ function next_level()
             7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
             7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
         `)
-        rowa.setPosition(9, 96)
+        rowa.entity.setPosition(9, 96)
 
         if(level == 20)
         {
@@ -421,7 +421,7 @@ function next_level()
             eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
             eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
         `)
-        rowa.setPosition(9, 96)
+        rowa.entity.setPosition(9, 96)
 
         if(level == 30)
         {
@@ -554,7 +554,7 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555
 5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555
         `)
-        rowa.setPosition(9, 96)
+        rowa.entity.setPosition(9, 96)
 
         if(level == 40)
         {
@@ -687,7 +687,7 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
             eeeeef222f55eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeff2222225feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
             eeeeff222f5eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef222222feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
         `)
-        rowa.setPosition(9, 96)
+        rowa.entity.setPosition(9, 96)
     }
     else if(level >= 45 && level < 49)
     {
@@ -820,7 +820,7 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
             5555555555555555555555555555555555555f99999999916666666666666618888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
             555555555555555555555555555555555555f999999999911166666666666611888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
         `)
-        rowa.setPosition(9, 96)
+        rowa.entity.setPosition(9, 96)
     }
     else
     {
@@ -835,7 +835,7 @@ game.onUpdate(
     function () 
     {
 
-        rowa.setImage(img`
+        rowa.entity.setImage(img`
             ................................
             ...........ffffffff.............
             .........ffffffffffff...........
@@ -869,16 +869,16 @@ game.onUpdate(
             .............fffffff............
             .............feeefeef...........
         `)
-        scene.centerCameraAt(rowa.x, 0)
-        if (rowa.vx < 0)
+        scene.centerCameraAt(rowa.entity.x, 0)
+        if (rowa.entity.vx < 0)
         {
-            rowa.image.flipX()
+            rowa.entity.image.flipX()
         }
 
         // animation
         animation.runImageAnimation
         (
-            rowa,
+            rowa.entity,
             [img`
                 ................................
                 ...........ffffffff.............
@@ -1000,6 +1000,7 @@ mySprite.ay = 294*/
 
 class character
 {
+
     entity: Sprite = null
     gravity: number = 294
 
@@ -1008,18 +1009,62 @@ class character
         this.entity = entity
         this.entity.ay = this.gravity
     }
+    
+    jump(jump_val: number)
+    {
+        function func()
+        {
+            // if character is stand on the platform or ground can jump
+            if (this.entity.vy == 0) 
+            {
+                this.entity.vy = jump_val
+            }
+
+        }
+        return func
+    }
 
 }
 
 class main_ch extends character
 {
+
     constructor(entity: Sprite)
     {
         super(entity)
     }
+
+    next()
+    {
+        function func()
+        {
+            level += 1
+            next_level()
+        }
+        return func
+    }
+
+    win()
+    {
+        function func()
+        {
+            game.over(true, effects.confetti)
+        }
+        return func
+    }
+
+    lose()
+    {
+        function func()
+        {
+            game.over(false, effects.melt)
+        }
+        return func
+    }
+
 }
 
-let entity = new character(sprites.create(img`
+let main_entity = new main_ch(sprites.create(img`
     ................................
     ...........ffffffff.............
     .........ffffffffffff...........
@@ -1053,10 +1098,15 @@ let entity = new character(sprites.create(img`
     .............fffffff............
     .............feeefeef...........
 `, SpriteKind.Player))
-let rowa = entity.entity 
-controller.moveSprite(rowa,80,0)
+let rowa = main_entity
 
+//controll
+controller.moveSprite(rowa.entity,80,0)
+controller.A.onEvent(ControllerButtonEvent.Pressed,rowa.jump(-150))
 
+//event
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile11, rowa.lose())
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile4, rowa.next())
 
 
 
