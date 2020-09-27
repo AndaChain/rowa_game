@@ -1,4 +1,4 @@
-# ROWA
+_# ROWA_
 สวัสดีทุกคน!! Github เป็นโปรเจคเกม ROWA ที่ผมทำร่วมกันกับเพื่อนอีกคน (https://github.com/Taweesin6201012620295) แต่งานส่วนใหญ่ก็จะมาอยู่ที่ Github นี้ 
 
 ## Blog for following
@@ -30,4 +30,4 @@ https://rowagame.blogspot.com/
 เป็นของคุณ John Park ซึ่งจะนำผลงานของเราไปปรับปรุงโดยใช้ของคุณ John Park เป็นแบบ
 เครดิตของคุณ John Park https://learn.adafruit.com/makecode-arcade-platform-level/create-a-tilemap-level-in-makecode-arcade
 
-# (เป็นโปรเจคส่งงานวิชา Software Development นะจ๊ะ)
+*(เป็นโปรเจคส่งงานวิชา Software Development นะจ๊ะ)*
