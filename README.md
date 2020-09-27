@@ -18,7 +18,7 @@ https://rowagame.blogspot.com/
 แผนงาน
 
 ## แผนงานจนถึงปลายเทอม
-![Work Plan](https://github.com/AndaChain/rowa_game/1_SmyEKVHpOcTJxiJbdne8sA.png)
+![Work Plan](https://github.com/AndaChain/rowa_game/blob/master/1_SmyEKVHpOcTJxiJbdne8sA.png)
 
 ## ปัญหาและความเสี่ยง
 1 Arcade Makecode จะมีปัญหาเกี่ยวกับสีที่รองรับได้แค่ 16 สี ต้องหาวิธีเพิ่มสี (กำลังศึกษา)
