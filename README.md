@@ -8,15 +8,17 @@
 * 4.เป้าหมาย เกมจะสิ้นสุดเมื่อผู้เล่นเล่นถึงด่านที่ 50 จากจุดเส้นชัยที่ทุกด่านจะเป็นที่กำบังให้น้อง Rowa จะเปลี่ยนเป็นเรือหลบหนีออกจากเกาะแห่งนั้น เป็นการจบแบบ Happy Ending
 
 ## ตัวละคร
-![rowa](https://github.com/AndaChain/rowa_game/blob/master/new_rowa.png)
 Rowa คือ ชื่อตัวละครหลักที่เราเล่น
 
-![jk](https://github.com/AndaChain/rowa_game/blob/master/new_jk.png)
+![rowa](https://github.com/AndaChain/rowa_game/blob/master/new_rowa.png)
+
 J.K. คือตัวศัตรูในด้าน
 
-![boss](https://github.com/AndaChain/rowa_game/blob/master/dango_the_final_boss.png)
+![jk](https://github.com/AndaChain/rowa_game/blob/master/new_jk.png)
+
 บอสดังโงะ(เปลี่ยนสีไปเรื่อยๆที่เจอทุกครั้ง)
 
+![boss](https://github.com/AndaChain/rowa_game/blob/master/dango_the_final_boss.png)
 
 ## เครื่องมือที่ใช้พัฒนา
 ตัวเกมสร้างจาก Arcade Madecode ในรูปแบบของ Typescript ซึ่งในบางครั้งถึงหลายๆครั้งก็ใช้การต่อบล็อกช่วยแต่ส่วนใหญ่ร้อยละ 60% ก็จะมาจากการเขียนเป็นเป็นแท็กโค้ดมากว่า (ตอนแรกๆใช้บล็อกเยอะหน่อยแต่พอไปหลังต้องมาใช้เป็นแท็กโค้ดเพื่อให้งานเร็วขึ้น)
