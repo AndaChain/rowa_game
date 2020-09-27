@@ -8,14 +8,11 @@
 * 4.เป้าหมาย เกมจะสิ้นสุดเมื่อผู้เล่นเล่นถึงด่านที่ 50 จากจุดเส้นชัยที่ทุกด่านจะเป็นที่กำบังให้น้อง Rowa จะเปลี่ยนเป็นเรือหลบหนีออกจากเกาะแห่งนั้น เป็นการจบแบบ Happy Ending
 
 ## ตัวละคร
-Rowa คือ ชื่อตัวละครหลักที่เราเล่น
-![rowa](https://github.com/AndaChain/rowa_game/blob/master/new_rowa.png)
+![rowa](https://github.com/AndaChain/rowa_game/blob/master/new_rowa.png)Rowa คือ ชื่อตัวละครหลักที่เราเล่น
 
-J.K. คือตัวศัตรูในด้าน
-![jk](https://github.com/AndaChain/rowa_game/blob/master/new_jk.png)
+![jk](https://github.com/AndaChain/rowa_game/blob/master/new_jk.png)J.K. คือตัวศัตรูในด้าน
 
-บอสดังโงะ(เปลี่ยนสีไปเรื่อยๆที่เจอทุกครั้ง)
-![boss](https://github.com/AndaChain/rowa_game/blob/master/dango_the_final_boss.png)
+![boss](https://github.com/AndaChain/rowa_game/blob/master/dango_the_final_boss.png)บอสดังโงะ(เปลี่ยนสีไปเรื่อยๆที่เจอทุกครั้ง)
 
 
 ## เครื่องมือที่ใช้พัฒนา
