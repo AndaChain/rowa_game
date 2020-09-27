@@ -1,35 +1,35 @@
-
-> Open this page at [https://.github.io//](https://.github.io//)
-
-## Use as Extension
-
-This repository can be added as an **extension** in MakeCode.
-
-* open []()
-* click on **New Project**
-* click on **Extensions** under the gearwheel menu
-* search for **https://github.com/** and import
-
-## Edit this project ![Build status badge](https://github.com//workflows/MakeCode/badge.svg)
-
-To edit this repository in MakeCode.
-
-* open []()
-* click on **Import** then click on **Import URL**
-* paste **https://github.com/** and click import
-
-## Blocks preview
-
-This image shows the blocks code from the last commit in master.
-This image may take a few minutes to refresh.
-
-![A rendered view of the blocks](https://github.com//raw/master/.github/makecode/blocks.png)
-
-#### Metadata (used for search, rendering)
-
-* for PXT/
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+สวัสดีทุกคน Github นี้เป็นส่วนหนึ่งของงานวิชา Software development ที่ผมและเพื่อนอีกคนร่วมกันทำโปรเจคเกม ROWA
+ในนี้ก็จะมี source code ของเกมที่เราทำและสามารถติดตามได้ในบล๊อกของพวกเราได้ข้างล่างนี้
 
 ## Blog for following
 * My blog
 https://rowagame.blogspot.com/
+
+จากการไปคุยกับเหล่าเพื่อนๆวันนี้ได้เนื้อหามาว่า
+
+## วัตถุประสงค์
+1 เพื่อพัฒนาทักษะการเขียนโปรแกรมด้วยการสร้างเกม
+2 เพื่อสร้างเกมที่สามารถเล่นด้วยอุปกรณ์อื่นที่ไม่ใช่แค่เมาส์และคีย์บอร์ด
+3 เพื่อมีตัวตนใน Github ไว้เป็นประวัติการพัฒนาด้านการเขียนโปรแกรม
+
+## ขอบเขตงาน
+1 สร้างเกมที่ควบคุมตัวละครให้หลบหลีกสิ่งกีดขวางต่างๆ และศัตรูโดยจะมีด้านพิเศษ (ด่านบอส) ทุกๆ 10 ด้านและจะเปลี่ยนแนวเกมไปเป็นเกมกดตามจังหวะเพลง
+2 สร้างเกมที่ใช้อุปกรณ์อื่นที่ไม่ใช่แค่เมาส์และคีย์บอร์ดอย่างเช่น Joy control
+แผนงาน
+
+## แผนงานจนถึงปลายเทอม
+![Work Plan](https://github.com/AndaChain/rowa_game/1_SmyEKVHpOcTJxiJbdne8sA.png)
+
+## ปัญหาและความเสี่ยง
+1 Arcade Makecode จะมีปัญหาเกี่ยวกับสีที่รองรับได้แค่ 16 สี ต้องหาวิธีเพิ่มสี (กำลังศึกษา)
+2 สามารถทำเกมที่มีขนาดได้ไม่เกิน 120x160 pixel เท่านั้นจึงต้องออกแบบฉากและตัวละครที่เหมาะสมกับขนาดหน้าจอด้วย
+3 มีความเสี่ยงด้านเกี่ยวกับด้านบอสที่จะมีการกดตามจังหวะเกมเพราะไม่รู้ว่าจะใส่เพลงได้แค่ไหนสำหรับ Arcade Makecode นี้
+
+## งานสำรอง
+ถ้างานนี้ไม่ผ่านหรือยากเกินไปถ้าเทียบกับเวลาที่มีจะตัดส่วนที่เป็นด้านบอสออกจะมีแค่ส่วนที่เป็นเดินหลบสิ่งกีดขวางและศัตรูเท่านั้นและจะนำไปพัฒนาต่อในครั้งต่อๆไป
+งานที่ใกล้เคียง
+
+เป็นของคุณ John Park ซึ่งจะนำผลงานของเราไปปรับปรุงโดยใช้ของคุณ John Park เป็นแบบ
+เครดิตของคุณ John Park https://learn.adafruit.com/makecode-arcade-platform-level/create-a-tilemap-level-in-makecode-arcade
+
+
