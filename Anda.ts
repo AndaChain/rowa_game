@@ -131,12 +131,16 @@ function next_level ()
         rowa.entity.setPosition(9, 96)
         if (level == 9)
         {
+            //create_dango(level)
+            rowa.entity.setPosition(120, 96)
             game.showLongText("Boss I", DialogLayout.Bottom)
         }
     }
     else if (level >= 10 && level <= 19)
     {
         // tile
+        boss_num = 0
+        destroy(sprites.allOfKind(EnemyKind.Boss))
         tiles.setTilemap(tilemap`level_1`)
         scene.setBackgroundImage(img`
             7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
@@ -263,12 +267,16 @@ function next_level ()
         rowa.entity.setPosition(9, 96)
         if (level == 19)
         {
+            //create_dango(level)
+            rowa.entity.setPosition(120, 96)
             game.showLongText("Boss II", DialogLayout.Bottom)
         }
     }
     else if (level >= 20 && level <= 29)
     {
         // tile
+        boss_num = 0
+        destroy(sprites.allOfKind(EnemyKind.Boss))
         tiles.setTilemap(tilemap`level_2`)
         scene.setBackgroundImage(img`
             9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -395,12 +403,16 @@ function next_level ()
         rowa.entity.setPosition(9, 96)
         if (level == 29)
         {
+            //create_dango(level)
+            rowa.entity.setPosition(120, 96)
             game.showLongText("Boss III", DialogLayout.Bottom)
         }
     }
     else if (level >= 30 && level <= 39)
     {
         // tile
+        boss_num = 0
+        destroy(sprites.allOfKind(EnemyKind.Boss))
         tiles.setTilemap(tilemap`level_3`)
         scene.setBackgroundImage(img`
             9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -527,12 +539,16 @@ function next_level ()
         rowa.entity.setPosition(9, 96)
         if (level == 39)
         {
+            //create_dango(level)
+            rowa.entity.setPosition(120, 96)
             game.showLongText("Boss IV", DialogLayout.Bottom)
         }
     }
     else if (level >= 40 && level <= 44)
     {
         // tile
+        boss_num = 0
+        destroy(sprites.allOfKind(EnemyKind.Boss))
         tiles.setTilemap(tilemap`level_4`)
         scene.setBackgroundImage(img`
             bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
@@ -658,14 +674,11 @@ function next_level ()
         `)
         rowa.entity.setPosition(9, 96)
     }
-    else if (level >= 45 && level < 49)
+    else if (level >= 45 && level <= 49)
     {
         // tile
-        if (level == 45)
-        {
-            game.showLongText("Final Boss", DialogLayout.Bottom)
-        }
-
+        boss_num = 0
+        destroy(sprites.allOfKind(EnemyKind.Boss))
         tiles.setTilemap(tilemap`level_5`)
         scene.setBackgroundImage(img`
             9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -789,7 +802,12 @@ function next_level ()
             5555555555555555555555555555555555555f99999999916666666666666618888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
             555555555555555555555555555555555555f999999999911166666666666611888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
         `)
-        rowa.entity.setPosition(9, 96)
+        rowa.entity.setPosition(120, 96)
+        //create_dango(level)
+        if (level == 45)
+        {
+            game.showLongText("Final Boss", DialogLayout.Bottom)
+        }
     }
     else
     {
