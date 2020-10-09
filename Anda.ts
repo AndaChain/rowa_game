@@ -1,6 +1,7 @@
 function next_level ()
 {
     enemy_num = 0 // ทำให้เกิด jk เพิ่มขึ้นทีละ 2 ตัว
+    get_input = []
     info.setScore(level)
     if (level >= 0 && level <= 9)
     {
@@ -134,6 +135,13 @@ function next_level ()
             //create_dango(level)
             rowa.entity.setPosition(120, 96)
             game.showLongText("Boss I", DialogLayout.Bottom)
+            
+            boss_scene(turn)
+            info.onCountdownEnd(function() {
+                info.stopCountdown()
+                boss_scene(turn)
+                get_input = []
+            })
         }
     }
     else if (level >= 10 && level <= 19)
@@ -270,6 +278,12 @@ function next_level ()
             //create_dango(level)
             rowa.entity.setPosition(120, 96)
             game.showLongText("Boss II", DialogLayout.Bottom)
+
+            boss_scene(turn)
+            info.onCountdownEnd(function() {
+                info.stopCountdown()
+                boss_scene(turn)
+            })
         }
     }
     else if (level >= 20 && level <= 29)
@@ -406,6 +420,12 @@ function next_level ()
             //create_dango(level)
             rowa.entity.setPosition(120, 96)
             game.showLongText("Boss III", DialogLayout.Bottom)
+
+            boss_scene(turn)
+            info.onCountdownEnd(function() {
+                info.stopCountdown()
+                boss_scene(turn)
+            })
         }
     }
     else if (level >= 30 && level <= 39)
@@ -542,6 +562,12 @@ function next_level ()
             //create_dango(level)
             rowa.entity.setPosition(120, 96)
             game.showLongText("Boss IV", DialogLayout.Bottom)
+
+            boss_scene(turn)
+            info.onCountdownEnd(function() {
+                info.stopCountdown()
+                boss_scene(turn)
+            })
         }
     }
     else if (level >= 40 && level <= 44)
@@ -672,7 +698,12 @@ function next_level ()
             eeeeef222f55eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeff2222225feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
             eeeeff222f5eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef222222feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
         `)
-        rowa.entity.setPosition(9, 96)
+        rowa.entity.setPosition(120, 96)
+        boss_scene(turn)
+        info.onCountdownEnd(function() {
+            info.stopCountdown()
+            boss_scene(turn)
+        })
     }
     else if (level >= 45 && level <= 49)
     {
@@ -802,11 +833,16 @@ function next_level ()
             5555555555555555555555555555555555555f99999999916666666666666618888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
             555555555555555555555555555555555555f999999999911166666666666611888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
         `)
-        rowa.entity.setPosition(120, 96)
+        rowa.entity.setPosition(9, 96)
         //create_dango(level)
-        if (level == 45)
+        if (level == 49)
         {
             game.showLongText("Final Boss", DialogLayout.Bottom)
+            boss_scene(turn) //ทำตรงนี้มี counter
+            info.onCountdownEnd(function() { //หลังจบ counter ให้หยุด counter
+                info.stopCountdown()
+                boss_scene(turn) // และมาทำใหม่อีกครั้ง
+            })
         }
     }
     else
