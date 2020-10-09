@@ -134,7 +134,7 @@ function next_level ()
         {
             //create_dango(level)
             rowa.entity.setPosition(120, 96)
-            game.showLongText("Boss I", DialogLayout.Bottom)
+            game.showLongText(choose_boss_game[0] , DialogLayout.Bottom)
             
             boss_scene(turn)
             info.onCountdownEnd(function() {

@@ -22,8 +22,10 @@ let enemy_num = 0
 let boss_num = 0
 let turn = 0
 
-let get_input: string[] = [] 
-let boss_game: string[] = ["right","left","up"]
+let get_input: string[] = []
+let boss_game: string[] = ["right","left","up","down","A","B"]
+//let choose_boss_game: string[] = [boss_game[randint(0, 3)], boss_game[randint(0, 3)], boss_game[randint(0, 3)]]
+let choose_boss_game: string[] = []
 
 // animation rowa
 mainRunRight = animation.createAnimation(ActionKind.MoveRight, 200)
@@ -934,36 +936,38 @@ function boss_scene(turn_: number)
         check_input()
 
         console.log(get_input) //สร้างโรงงาน
-
+        //dango.entity.say(choose_boss_game[0] + choose_boss_game[1] + choose_boss_game[2])
         for(let i=0; i<3; i++)
         {
-            if(boss_game != [] && boss_num == 1)
+            if(choose_boss_game != [] && boss_num == 1)
             {
-                if(boss_game[i] != get_input[i])
+                if(choose_boss_game[i] != get_input[i])
                 {
                     game.over(false, effects.melt)
                 }
             }
         }
 
+        choose_boss_game = [boss_game[randint(0, 5)], boss_game[randint(0, 5)], boss_game[randint(0, 5)]]
         turn += 1
     }
     else
     {
         turn = 0
         console.log(get_input) //สร้างโรงงาน
-        
+        //dango.entity.say(choose_boss_game[0] + choose_boss_game[1] + choose_boss_game[2])
         for(let i=0; i<3; i++)
         {
-            if(boss_game != [] && boss_num == 1)
+            if(choose_boss_game != [] && boss_num == 1)
             {
-                if(boss_game[i] != get_input[i])
+                if(choose_boss_game[i] != get_input[i])
                 {
                     game.over(false, effects.melt)
                 }
             }
         }
 
+        choose_boss_game = [boss_game[randint(0, 5)], boss_game[randint(0, 5)], boss_game[randint(0, 5)]]
         let temp = rowa.next()
         temp()
     }
