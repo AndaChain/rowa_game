@@ -134,7 +134,7 @@ function next_level ()
         {
             //create_dango(level)
             rowa.entity.setPosition(120, 96)
-            game.showLongText(choose_boss_game[0] , DialogLayout.Bottom)
+            //game.showLongText(choose_boss_game[0] , DialogLayout.Bottom)
             
             boss_scene(turn)
             info.onCountdownEnd(function() {
@@ -837,6 +837,7 @@ function next_level ()
         //create_dango(level)
         if (level == 49)
         {
+            rowa.entity.setPosition(120, 96)
             game.showLongText("Final Boss", DialogLayout.Bottom)
             boss_scene(turn) //ทำตรงนี้มี counter
             info.onCountdownEnd(function() { //หลังจบ counter ให้หยุด counter

@@ -6,6 +6,16 @@ enum ActionKind
     Walking,
     Jumping
 }
+
+enum ActionKind_jk
+{
+    moveRight,
+    moveLeft,
+    idle,
+    Walking,
+    Jumping
+}
+
 enum EnemyKind
 {
     Boss
@@ -14,9 +24,15 @@ enum EnemyKind
 let jk: jk_ch = null
 let rowa: rowa_ch = null
 let dango: dango_ch = null
+
 let mainIdle = null
 let mainRunLeft = null
 let mainRunRight = null
+
+let jkIdle = null
+let jkRunLeft = null
+let jkRunRight = null
+
 let level = 0
 let enemy_num = 0
 let boss_num = 0
@@ -26,11 +42,17 @@ let get_input: string[] = []
 let boss_game: string[] = ["right","left","up","down","A","B"]
 //let choose_boss_game: string[] = [boss_game[randint(0, 3)], boss_game[randint(0, 3)], boss_game[randint(0, 3)]]
 let choose_boss_game: string[] = []
+let jk_array_: jk_ch[] = []
 
 // animation rowa
 mainRunRight = animation.createAnimation(ActionKind.MoveRight, 200)
 mainRunLeft = animation.createAnimation(ActionKind.MoveLeft, 200)
 mainIdle = animation.createAnimation(ActionKind.Idle, 200)
+
+// animation jk
+/*jkRunRight = animation.createAnimation(ActionKind_jk.moveRight, 200)
+jkRunLeft = animation.createAnimation(ActionKind_jk.moveLeft, 200)
+jkIdle = animation.createAnimation(ActionKind_jk.idle, 200)*/
 
 class character
 {
@@ -62,20 +84,21 @@ class character
         return func
     }
 
-    walk_right(main:any ,frame_1 : any, frame_2: any)
+    walk_right(main:any ,frame_1 : any, frame_2: any, frame_3: any = null)
     {
         function func()
         {
             animation.attachAnimation(this.entity, main)
             frame_1
             frame_2
+            frame_3
             get_input.push("right")
         }
         console.log("I am walking to right")
         return func
     }
 
-    walk_left(main:any ,frame_1 : any, frame_2: any)
+    walk_left(main:any ,frame_1 : any, frame_2: any, frame_3: any = null)
     {
         function func()
         {
@@ -83,6 +106,7 @@ class character
             animation.attachAnimation(this.entity, main)
             frame_1
             frame_2
+            frame_3
             get_input.push("left")
         }
         console.log("I am walking to left")
@@ -193,9 +217,12 @@ class dango_ch extends character
     constructor(entity: Sprite)
     {
         super(entity)
+        entity.ay = 0
     }
 
 }
+
+
 
 // *******************creating character*******************
 function create_rowa ()
@@ -282,6 +309,7 @@ function create_jk()
                 tiles.placeOnTile(jk.entity, tiles_location[enemy_num])
                 tiles.setTileAt(tiles_location[enemy_num], myTiles.tile9)
                 enemy_num += 1
+                jk_array_.push(jk)
             }
         }
 
@@ -326,6 +354,7 @@ function create_jk()
                 tiles.placeOnTile(jk.entity, tiles_location[enemy_num])
                 tiles.setTileAt(tiles_location[enemy_num], myTiles.tile9)
                 enemy_num += 1
+                jk_array_.push(jk)
             }
         }
     }
@@ -624,9 +653,12 @@ function create_dango(level_: number)
             tiles.placeOnTile(dango.entity, tiles_location[0])
             boss_num += 1
         }
-        
         tiles.setTileAt(tiles_location[0], myTiles.tile9) // 9 คือว่าง 23 คือสีชมพู
-
+        
+        if(boss_num == 1)
+        {
+            dango.entity.setPosition(70, 96)
+        }
     }
 }
 // **************************************
@@ -856,7 +888,12 @@ function rowa_move(mainRunRight:any, mainRunLeft:any, mainIdle:any)
 function jk_move()
 {   
     let jk_array = sprites.allOfKind(SpriteKind.Enemy) // คือ array ของ jk ที่อยู่ในฉาก
-    for(let enemy of jk_array)
+
+    jkRunRight = animation.createAnimation(ActionKind_jk.moveRight, 200)
+    jkRunLeft = animation.createAnimation(ActionKind_jk.moveLeft, 200)
+    jkIdle = animation.createAnimation(ActionKind_jk.idle, 200)
+
+    /*for(let enemy of jk_array)
     {
         if(level%10 <= 5)
         {
@@ -912,9 +949,176 @@ function jk_move()
                 enemy.vy = 0
             }
         }
+    }*/
+
+    for(let enemy of jk_array_)
+    {
+        set_Action(enemy, ActionKind_jk.moveRight, ActionKind_jk.moveLeft, ActionKind_jk.idle)
+        if(level%10 <= 5)
+        {
+            if (Math.abs(enemy.entity.x - rowa.entity.x) < 70)
+            {
+                if (enemy.entity.x - rowa.entity.x < -5)
+                {
+                    enemy.entity.vx = 10
+                }
+                else if (enemy.entity.x - rowa.entity.x > 5)
+                {
+                    enemy.entity.vx = -10
+                }
+                if (enemy.entity.y - rowa.entity.y < -5)
+                {
+                    enemy.entity.vy = 10
+                }
+                else if (enemy.entity.y - rowa.entity.y > 5)
+                {
+                    enemy.entity.vy = -10
+                }
+            }
+            else
+            {
+                enemy.entity.vx = 0
+                enemy.entity.vy = 0
+            }
+        }
+        else
+        {
+            if (Math.abs(enemy.entity.x - rowa.entity.x) < 70)
+            {
+                if (enemy.entity.x - rowa.entity.x < -5)
+                {
+                    enemy.entity.vx = 10*5
+                }
+                else if (enemy.entity.x - rowa.entity.x > 5)
+                {
+                    enemy.entity.vx = -10*5
+                }
+                if (enemy.entity.y - rowa.entity.y < -5)
+                {
+                    enemy.entity.vy = 10*5
+                }
+                else if (enemy.entity.y - rowa.entity.y > 5)
+                {
+                    enemy.entity.vy = -10*5
+                }
+            }
+            else
+            {
+                enemy.entity.vx = 0
+                enemy.entity.vy = 0
+            }
+        }
+        enemy.walk_right(jkRunRight,
+                        jkRunRight.addAnimationFrame(img`
+                                        ................................
+                                        ................................
+                                        ..........ff....................
+                                        ...........ffffff...............
+                                        ............f77ffff.............
+                                        .............ffffff.............
+                                        .............ff77ffff...........
+                                        ...........fff7ff777ff..........
+                                        ..........ff7f777ff77ffffffff...
+                                        .........fffff777ff777777777ff..
+                                        ............ff777777777777777f..
+                                        ............ff77777ffffffffff...
+                                        ..........ffff77777f............
+                                        ........fff77f777ffff...........
+                                        ........fff7ff777ff5ff......f...
+                                        ..........fff77775555ffffffff...
+                                        ...........ff77775555fbbbbbff...
+                                        .........ffff77775555ffffffff...
+                                        ........ff77f77775555f..........
+                                        ........fffffff77ff5ff..........
+                                        ...........fffffffffffffffff....
+                                        ..........ffffaaafffaaaaaaa5f...
+                                        .........ffaaaaaaaaaaaaaaaa5f...
+                                        ........ffaaaaaaaaaaaaaaaffff...
+                                        .dd.fffffffffffffffffffff222ff..
+                                        .dd.ff999ff............ff222ff..
+                                        .dd.fffffff.............fffff...
+                                        ................................
+                                        ................................
+                                        ................................
+                                        ................................
+                                        ................................
+                        `),
+                        jkRunRight.addAnimationFrame(img`
+                                        ................................
+                                        ................................
+                                        ..........ff....................
+                                        ...........fffff................
+                                        ............f77fff..............
+                                        .............fff7f..............
+                                        .............ff77fff............
+                                        ...........fff7ff77ff...........
+                                        ..........ff7f77ff77ffffffff....
+                                        .........fffff77ff777777777ff...
+                                        ............ff77777777777777f...
+                                        ............ff7777ffffffffff....
+                                        ..........ffff7777f.............
+                                        ........fff77f777fff............
+                                        ........fff7ff777f5ff......f....
+                                        ..........fff777f555ffffffff....
+                                        .........ffff777f555ffffffff....
+                                        ........ff77f777f555f...........
+                                        ........fffffff77f5ff...........
+                                        ...........fffff7ffffffffff.....
+                                        ..........ffffaafffaaaaaaa5f....
+                                        ddd......ffaaaaaaaaaaaaaaa5f....
+                                        d.d.....ffaaaaaaaaaaaaaaffff....
+                                        d.d.ffffffffffffffffffff222ff...
+                                        d.ddff999ff...........ff222ff...
+                                        d.ddfffffff............fffff....
+                                        dd..............................
+                                        ................................
+                                        ................................
+                                        ................................
+                                        ................................
+                                        ................................
+                        `),
+                        jkRunRight.addAnimationFrame(img`
+                                        ................................
+                                        ................................
+                                        ..........ff....................
+                                        ...........fffff................
+                                        ............f77fff..............
+                                        .............fff7f..............
+                                        .............ff77fff............
+                                        ...........fff7ff77ff...........
+                                        ..........ff7f77ff77ffffffff....
+                                        .........fffff77ff777777777ff...
+                                        ............ff77777777777777f...
+                                        ............ff7777ffffffffff....
+                                        ..........ffff7777f.............
+                                        ........fff77f777fff............
+                                        ........fff7ff777f5ff......f....
+                                        ..........fff777f555ffffffff....
+                                        ...........ff777f555fbbbbbff....
+                                        .........ffff777f555ffffffff....
+                                        ........ff77f777f555f...........
+                                        ........fffffff77f5ff...........
+                                        ...........fffff7ffffffffff.....
+                                        dd........ffffaafffaaaaaaa5f....
+                                        ddd......ffaaaaaaaaaaaaaaa5f....
+                                        d.d.....ffaaaaaaaaaaaaaaffff....
+                                        d.d.ffffffffffffffffffff222ff...
+                                        d..dff999ff...........ff222ff...
+                                        d..dfffffff............fffff....
+                                        d..d............................
+                                        dddd............................
+                                        ................................
+                                        ................................
+                                        ................................
+                        `))
     }
+
+
 }
 // **************************************
+
+
+
 
 
 // *******************destroying character*******************
@@ -927,6 +1131,10 @@ function destroy(Kind: Sprite[])
 }
 // **************************************
 
+
+
+
+
 // **************************************boss scene**************************************
 function boss_scene(turn_: number)
 {
@@ -935,8 +1143,9 @@ function boss_scene(turn_: number)
         info.startCountdown(3)
         check_input()
 
-        console.log(get_input) //สร้างโรงงาน
+        //สร้างโรงงาน
         //dango.entity.say(choose_boss_game[0] + choose_boss_game[1] + choose_boss_game[2])
+        
         for(let i=0; i<3; i++)
         {
             if(choose_boss_game != [] && boss_num == 1)
@@ -949,13 +1158,17 @@ function boss_scene(turn_: number)
         }
 
         choose_boss_game = [boss_game[randint(0, 5)], boss_game[randint(0, 5)], boss_game[randint(0, 5)]]
+        console.log(choose_boss_game[0] +" "+ choose_boss_game[1] +" "+ choose_boss_game[2])
+        rowa.entity.say(choose_boss_game[0] +" "+ choose_boss_game[1] +" "+ choose_boss_game[2], 3000)
         turn += 1
     }
     else
     {
         turn = 0
-        console.log(get_input) //สร้างโรงงาน
-        //dango.entity.say(choose_boss_game[0] + choose_boss_game[1] + choose_boss_game[2])
+        //สร้างโรงงาน
+        console.log(choose_boss_game[0] +" "+ choose_boss_game[1] +" "+ choose_boss_game[2])
+        //dango.entity.say(choose_boss_game[0] +" "+ choose_boss_game[1] +" "+ choose_boss_game[2], 3000)
+        
         for(let i=0; i<3; i++)
         {
             if(choose_boss_game != [] && boss_num == 1)
@@ -967,7 +1180,6 @@ function boss_scene(turn_: number)
             }
         }
 
-        choose_boss_game = [boss_game[randint(0, 5)], boss_game[randint(0, 5)], boss_game[randint(0, 5)]]
         let temp = rowa.next()
         temp()
     }
@@ -986,6 +1198,28 @@ function check_input()
 // **************************************
 
 
+
+// **************************************check_position**************************************
+function set_Action(entity_:any, action_right:any, action_left:any, action_idle:any)
+{
+    if (entity_.entity.vx > 0 && entity_.entity.vy == 0)
+    {
+        animation.setAction(entity_.entity, action_right)
+    }
+    else if (entity_.entity.vx < 0 && entity_.entity.vy == 0)
+    {
+        animation.setAction(entity_.entity, action_left)
+    }
+    else
+    {
+        animation.setAction(entity_.entity, action_idle)
+    }
+}
+// **************************************
+
+
+
+
 // start game
 create_rowa() // สร้าง rowa
 rowa_move(mainRunRight, mainRunLeft, mainIdle) // จัดการเกี่ยวกับการเคลื่อนไหวของ rowa
@@ -994,6 +1228,8 @@ next_level() // จัดการเกี่ยวกับฉาก
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile11, rowa.lose()) // ตกหลุมตาย
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, rowa.lose()) // โดน jk ตาย
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile4, rowa.next()) // เข้าเส้นชัยชนะ
+
+
 
 // updating game
 game.onUpdate(
@@ -1005,7 +1241,7 @@ function ()
     create_dango(level) 
 
     scene.centerCameraAt(rowa.entity.x, 0)
-    if (rowa.entity.vx > 0 && rowa.entity.vy == 0)
+    /*if (rowa.entity.vx > 0 && rowa.entity.vy == 0)
     {
         animation.setAction(rowa.entity, ActionKind.MoveRight)
     }
@@ -1016,7 +1252,9 @@ function ()
     else
     {
         animation.setAction(rowa.entity, ActionKind.Idle)
-    }
+    }*/
+
+    set_Action(rowa, ActionKind.MoveRight, ActionKind.MoveLeft, ActionKind.Idle)
 
     if(level%10 >= 6)
     {
@@ -1028,7 +1266,10 @@ function ()
         rowa.set_VELOCITY(rowa.VELOCITY)
         rowa.set_JUMP(rowa.JUMP)
     }
+
 })
+
+
 
 function enemy_location(input_array: tiles.Location[])
 {
