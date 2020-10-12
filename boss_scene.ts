@@ -14,8 +14,15 @@ function boss_scene(turn_: number)
             if(choose_boss_game != [] && boss_num == 1)
             {
                 if(choose_boss_game[i] != get_input[i])
+                { 
+                    dango.ball_attack()
+                    //rowa.entity.vy = rowa.JUMP
+                    //game.over(false, effects.melt)
+                }
+                else
                 {
-                    game.over(false, effects.melt)
+                    dango.ball_attack()
+                    rowa.entity.vy = rowa.JUMP
                 }
             }
         }
@@ -31,18 +38,23 @@ function boss_scene(turn_: number)
         //สร้างโรงงาน
         console.log(choose_boss_game[0] +" "+ choose_boss_game[1] +" "+ choose_boss_game[2])
         //dango.entity.say(choose_boss_game[0] +" "+ choose_boss_game[1] +" "+ choose_boss_game[2], 3000)
-        
         for(let i=0; i<3; i++)
-        {
+        { 
             if(choose_boss_game != [] && boss_num == 1)
             {
                 if(choose_boss_game[i] != get_input[i])
                 {
-                    game.over(false, effects.melt)
+                    dango.ball_attack()
+                    //rowa.entity.vy = rowa.JUMP
+                    //game.over(false, effects.melt)
+                }
+                else
+                {
+                    dango.ball_attack()
+                    rowa.entity.vy = rowa.JUMP
                 }
             }
         }
-
         let temp = rowa.next()
         temp()
     }
