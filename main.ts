@@ -256,7 +256,14 @@ next_level() // จัดการเกี่ยวกับฉาก
 //create_jk() // สร้างศัตรู
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile11, rowa.lose()) // ตกหลุมตาย
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, rowa.lose()) // โดน jk ตาย
+sprites.onOverlap(SpriteKind.Player, EnemyKind.Boss, rowa.lose()) // โดน dango ตาย
+
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile4, rowa.next()) // เข้าเส้นชัยชนะ
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile64, rowa.next()) // เข้าเส้นชัยชนะ
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile65, rowa.next()) // เข้าเส้นชัยชนะ
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile66, rowa.next()) // เข้าเส้นชัยชนะ
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile67, rowa.next()) // เข้าเส้นชัยชนะ
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile68, rowa.next()) // เข้าเส้นชัยชนะ
 
 
 
@@ -283,10 +290,14 @@ function ()
         rowa.set_VELOCITY(rowa.VELOCITY)
         rowa.set_JUMP(rowa.JUMP)
     }
-    else if(boss_num == 1)
+    else if(boss_num == 1 && level != 49)
     {
         rowa.set_VELOCITY(0)
         rowa.set_JUMP(0)
+    }
+    else if(level == 49)
+    {
+        dango_move()
     }
 
 })

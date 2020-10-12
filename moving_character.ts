@@ -514,3 +514,27 @@ function jk_move()
 
 }
 // **************************************
+
+function dango_move()
+{
+    if (Math.abs(dango.entity.x - rowa.entity.x) < 100)
+    {
+        if (dango.entity.x - rowa.entity.x < -5)
+        {
+            dango.entity.vx = 10*8
+        }
+        else if (dango.entity.x - rowa.entity.x > 5)
+        {
+            dango.entity.vx = -10*8
+        }
+        if (dango.entity.y - rowa.entity.y < -5)
+        {
+            dango.entity.vy = 10*8
+        }
+        else if (dango.entity.y - rowa.entity.y > 5)
+        {
+                    
+            dango.entity.vy = -10*8
+        }
+    }
+}

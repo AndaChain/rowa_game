@@ -136,10 +136,10 @@ function next_level ()
             rowa.entity.setPosition(120, 96)
             //game.showLongText(choose_boss_game[0] , DialogLayout.Bottom)
             
-            boss_scene(turn)
-            info.onCountdownEnd(function() {
-                info.stopCountdown()
-                boss_scene(turn)
+            boss_scene(turn) //ทำตรงนี้มี counter
+            info.onCountdownEnd(function() { //หลังจบ counter ให้หยุด counter
+                info.stopCountdown() 
+                boss_scene(turn) // และมาทำใหม่อีกครั้ง
                 get_input = []
             })
         }
@@ -283,6 +283,7 @@ function next_level ()
             info.onCountdownEnd(function() {
                 info.stopCountdown()
                 boss_scene(turn)
+                get_input = []
             })
         }
     }
@@ -425,6 +426,7 @@ function next_level ()
             info.onCountdownEnd(function() {
                 info.stopCountdown()
                 boss_scene(turn)
+                get_input = []
             })
         }
     }
@@ -567,6 +569,7 @@ function next_level ()
             info.onCountdownEnd(function() {
                 info.stopCountdown()
                 boss_scene(turn)
+                get_input = []
             })
         }
     }
@@ -703,6 +706,7 @@ function next_level ()
         info.onCountdownEnd(function() {
             info.stopCountdown()
             boss_scene(turn)
+            get_input = []
         })
     }
     else if (level >= 45 && level <= 49)
@@ -839,11 +843,6 @@ function next_level ()
         {
             rowa.entity.setPosition(120, 96)
             game.showLongText("Final Boss", DialogLayout.Bottom)
-            boss_scene(turn) //ทำตรงนี้มี counter
-            info.onCountdownEnd(function() { //หลังจบ counter ให้หยุด counter
-                info.stopCountdown()
-                boss_scene(turn) // และมาทำใหม่อีกครั้ง
-            })
         }
     }
     else
