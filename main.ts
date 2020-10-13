@@ -297,9 +297,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, rowa.lose()) // โ�
 
 
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile4, rowa.next()) // เข้าเส้นชัยชนะ
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile64, rowa.next()) // เข้าเส้นชัยชนะ
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile65, rowa.next()) // เข้าเส้นชัยชนะ
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile66, rowa.next()) // เข้าเส้นชัยชนะ
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile67, rowa.next()) // เข้าเส้นชัยชนะ
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile68, rowa.next()) // เข้าเส้นชัยชนะ
 
