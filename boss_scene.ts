@@ -1,6 +1,7 @@
 // **************************************boss scene**************************************
 function boss_scene(turn_: number)
 {
+    let attack = sprites.allOfKind(SpriteKind.Projectile)
     if(turn_ < 3)
     {
         info.startCountdown(3)
@@ -9,21 +10,19 @@ function boss_scene(turn_: number)
         //สร้างโรงงาน
         //dango.entity.say(choose_boss_game[0] + choose_boss_game[1] + choose_boss_game[2])
         
-        for(let i=0; i<3; i++)
+
+        if(choose_boss_game != [] && boss_num == 1)
         {
-            if(choose_boss_game != [] && boss_num == 1)
+            if(choose_boss_game[0] != get_input[0] || choose_boss_game[1] != get_input[1] || choose_boss_game[2] != get_input[2])
+            { 
+                dango.ball_attack()
+                //rowa.entity.vy = rowa.JUMP
+                //game.over(false, effects.melt)
+            }
+            else
             {
-                if(choose_boss_game[i] != get_input[i])
-                { 
-                    dango.ball_attack()
-                    //rowa.entity.vy = rowa.JUMP
-                    //game.over(false, effects.melt)
-                }
-                else
-                {
-                    dango.ball_attack()
-                    rowa.entity.vy = rowa.JUMP
-                }
+                dango.ball_attack()
+                rowa.entity.vy = rowa.JUMP
             }
         }
 
@@ -34,31 +33,25 @@ function boss_scene(turn_: number)
     }
     else
     {
-        turn = 0
         //สร้างโรงงาน
         console.log(choose_boss_game[0] +" "+ choose_boss_game[1] +" "+ choose_boss_game[2])
         //dango.entity.say(choose_boss_game[0] +" "+ choose_boss_game[1] +" "+ choose_boss_game[2], 3000)
-        for(let i=0; i<3; i++)
-        { 
-            if(choose_boss_game != [] && boss_num == 1)
+        if(choose_boss_game != [] && boss_num == 1)
+        {
+            if(choose_boss_game[0] != get_input[0] || choose_boss_game[1] != get_input[1] || choose_boss_game[2] != get_input[2])
             {
-                if(choose_boss_game[i] != get_input[i])
-                {
-                    dango.ball_attack()
-                    //rowa.entity.vy = rowa.JUMP
-                    //game.over(false, effects.melt)
-                }
-                else
-                {
-                    dango.ball_attack()
-                    rowa.entity.vy = rowa.JUMP
-                }
+                dango.ball_attack()
+                //rowa.entity.vy = rowa.JUMP
+                //game.over(false, effects.melt)
+            }
+            else
+            {
+                turn = 0
+                let temp = rowa.next()
+                temp()
             }
         }
-        let temp = rowa.next()
-        temp()
     }
-
 }
 
 function check_input()
