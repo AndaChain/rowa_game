@@ -32,7 +32,7 @@ let jkIdle = null
 let jkRunLeft = null
 let jkRunRight = null
 
-let level = 49
+let level = 0
 let enemy_num = 0
 let boss_num = 0
 let turn = 0
