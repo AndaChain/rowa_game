@@ -335,7 +335,6 @@ function ()
     {
         dango_move()
     }
-
 })
 
 
@@ -350,3 +349,27 @@ function enemy_location(input_array: tiles.Location[])
 
     return temp
 }
+
+forever(function()
+{
+    // background music
+    if( level%10 == 9 || (level >= 40 && level <= 44) )
+    {
+        music.playMelody("C5 - C5 - C5 B A C5 ", 318)
+        music.playMelody("B B - B C5 B A G ", 303)
+        music.playMelody("G - G A - A B B ", 300)
+    }
+    else
+    {
+        if(level%10 < 6)
+        {
+            music.playMelody("C5 G A B A G G B ", 250)
+            music.playMelody("B G - A G A - G ", 250)
+        }
+        else
+        {
+            music.playMelody("C5 G A B A G G B ", 333)
+            music.playMelody("B G - A G A - G ", 333)
+        }
+    } 
+})
