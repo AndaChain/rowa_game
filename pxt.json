@@ -12,11 +12,10 @@
     },
     "files": [
         "README.md",
-        "main.blocks",
         "main.ts",
         "tilemap.g.jres",
         "tilemap.g.ts",
-        "Anda.ts",
+        "next_level.ts",
         "create_character.ts",
         "moving_character.ts",
         "boss_scene.ts"

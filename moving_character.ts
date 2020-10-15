@@ -219,10 +219,6 @@ function jk_move()
 {   
     let jk_array = sprites.allOfKind(EnemyKind.JK) // คือ array ของ jk ที่อยู่ในฉาก
     let play = null
-    
-    jkRunRight = animation.createAnimation(ActionKind_jk.MoveRight, 200)
-    jkRunLeft = animation.createAnimation(ActionKind_jk.MoveLeft, 200)
-    jkIdle = animation.createAnimation(ActionKind_jk.Idle, 200)
 
     for(let enemy of jk_array_)
     {
